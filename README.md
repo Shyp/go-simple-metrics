@@ -7,9 +7,8 @@ three functions, the ones we use the most often.
 
 ```go
 func init() {
-    metrics.Realm = "prod"
     metrics.Namespace = "api"
-    source := "web.1"
+    source := "prod.web.1"
     metrics.Start(source)
 }
 
