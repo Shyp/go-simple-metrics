@@ -21,22 +21,11 @@ var debug = godebug.Debug("metrics")
 // "jobs", "parcels", &c).
 var Namespace string
 
-// Realm is the realm the metrics live in - for example "dev", "stage", "prod"
-var Realm string
-
 func getWithNamespace(metricName string) string {
 	if Namespace == "" {
-		if Realm == "" {
-			return metricName
-		} else {
-			return fmt.Sprintf("%s.%s", Realm, metricName)
-		}
+		return metricName
 	} else {
-		if Realm == "" {
-			return fmt.Sprintf("%s.%s", Namespace, metricName)
-		} else {
-			return fmt.Sprintf("%s.%s.%s", Realm, Namespace, metricName)
-		}
+		return fmt.Sprintf("%s.%s", Namespace, metricName)
 	}
 }
 

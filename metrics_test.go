@@ -10,19 +10,16 @@ import (
 
 func TestNamespace(t *testing.T) {
 	originalNamespace := Namespace
-	originalRealm := Realm
 	defer func() {
 		Namespace = originalNamespace
-		Realm = originalRealm
 	}()
 	Namespace = "foo"
-	Realm = "test"
-	if getWithNamespace("bar") != "test.foo.bar" {
-		t.Errorf("expected getWithNamespace(bar) to be test.foo.bar, was %s", getWithNamespace("bar"))
+	if getWithNamespace("bar") != "foo.bar" {
+		t.Errorf("expected getWithNamespace(bar) to be foo.bar, was %s", getWithNamespace("bar"))
 	}
 
 	Namespace = ""
-	test.AssertEquals(t, getWithNamespace("bar"), "test.bar")
+	test.AssertEquals(t, getWithNamespace("bar"), "bar")
 }
 
 func TestIncrementIncrements(t *testing.T) {
