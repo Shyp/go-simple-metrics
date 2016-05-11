@@ -14,6 +14,8 @@ import (
 	metrics "github.com/rcrowley/go-metrics"
 )
 
+const Version = "0.2"
+
 var debug = godebug.Debug("metrics")
 
 // Namespace is the namespace under which all metrics will get incremented.
