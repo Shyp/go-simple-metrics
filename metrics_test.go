@@ -26,7 +26,7 @@ func TestIncrementIncrements(t *testing.T) {
 	Increment("bar")
 	Increment("bar")
 	Increment("bar")
-	mn := metrics.GetOrRegisterMeter("bar", nil)
+	mn := metrics.GetOrRegisterCounter("bar", nil)
 	if mn.Count() != 3 {
 		t.Errorf("expected Count() to be 3, was %d", mn.Count())
 	}
